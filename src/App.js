@@ -9,6 +9,7 @@ import { db } from './firebase';
 
 function App() {
   const [modalShow, setModalShow] = React.useState(false);
+  const [numOfProducts, setNumOfProducts] = React.useState(['']);
 
   return (
     <div>
@@ -81,6 +82,22 @@ function App() {
                   value={values.address}
                   />
               </Form.Group>
+
+              <Form.Group controlId="formBasicAddress">
+                <Form.Label>Products</Form.Label>
+                {numOfProducts.map((product, index) => <Form.Control 
+                  name={`products-${index}`}
+                  type="text"
+                  placeholder={`Your product ${index}`}
+                  onChange={(value) => {handleChange(value)}}
+                  value={values.products}
+                  />)}
+                
+              </Form.Group>
+
+              <Button variant="info" type="button" onClick={() => {
+                setNumOfProducts([{}, {}])
+              }}>Add more</Button>
 
               <Form.Group controlId="formBasicMobile">
                 <Form.Label>Mobile Number</Form.Label>
