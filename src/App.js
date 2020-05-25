@@ -3,9 +3,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import Modal from 'react-bootstrap/Modal'
 import { Formik } from 'formik';
 
 function App() {
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
     <div>
       <header>
@@ -22,7 +25,10 @@ function App() {
           mobile: '',
           paymentMethod: ''
         }}
-        onSubmit={console.log}
+        onSubmit={(values) => {
+          console.log(values)
+          setModalShow(true);
+        }}
       >
         {({
           values,
@@ -98,6 +104,23 @@ function App() {
             </Form>
           )}
       </Formik>
+
+      {/* Modal for when submit button is submitted */}
+
+      <Modal
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+    >
+      <Modal.Body>
+        <h4>F</h4>
+        <p>
+          Thank you for your order. 
+        </p>
+      </Modal.Body>
+    </Modal>
     </div>
   );
 }
