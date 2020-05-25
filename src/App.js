@@ -54,7 +54,7 @@ function App() {
                   onChange={handleChange}
                   value={values.name}
                   required
-                  />
+                />
               </Form.Group>
 
               <Form.Group controlId="formBasicEmail">
@@ -66,7 +66,7 @@ function App() {
                   onChange={handleChange}
                   value={values.email}
                   required
-                  />
+                />
                 <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text>
@@ -74,40 +74,41 @@ function App() {
 
               <Form.Group controlId="formBasicAddress">
                 <Form.Label>Delivery Address</Form.Label>
-                <Form.Control 
+                <Form.Control
                   name="address"
                   type="text"
                   placeholder="e.g 123 Main Street, Angeles City"
                   onChange={handleChange}
                   value={values.address}
-                  />
+                />
               </Form.Group>
 
               <Form.Group controlId="formBasicAddress">
                 <Form.Label>Products</Form.Label>
-                {numOfProducts.map((product, index) => <Form.Control 
+                {numOfProducts.map((product, index) => <Form.Control
                   name={`products-${index}`}
                   type="text"
                   placeholder={`Your product ${index}`}
-                  onChange={(value) => {handleChange(value)}}
+                  onChange={(value) => { handleChange(value) }}
                   value={values.products}
-                  />)}
-                
+                  style={{ marginBottom: ".5rem" }}
+                />)}
               </Form.Group>
 
-              <Button variant="info" type="button" onClick={() => {
-                setNumOfProducts([{}, {}])
-              }}>Add more</Button>
+              <Button variant="info" type="button" style={{ marginBottom: ".5rem" }}
+                onClick={() => {
+                  setNumOfProducts(prevState => [...prevState, ''])
+                }}>Add row</Button>
 
               <Form.Group controlId="formBasicMobile">
                 <Form.Label>Mobile Number</Form.Label>
-                <Form.Control 
+                <Form.Control
                   name="mobile"
                   type="number"
                   placeholder="e.g 0906 234 7856"
                   onChange={handleChange}
                   value={values.mobile}
-                  />
+                />
               </Form.Group>
 
               <Form.Group controlId="formBasicPayment">
@@ -128,19 +129,19 @@ function App() {
       {/* Modal for when submit button is submitted */}
 
       <Modal
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      show={modalShow}
-      onHide={() => setModalShow(false)}
-    >
-      <Modal.Body>
-        <h4>F</h4>
-        <p>
-          Thank you for your order. 
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      >
+        <Modal.Body>
+          <h4>F</h4>
+          <p>
+            Thank you for your order.
         </p>
-      </Modal.Body>
-    </Modal>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
