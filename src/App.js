@@ -5,6 +5,7 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import Modal from 'react-bootstrap/Modal'
 import { Formik } from 'formik';
+import { db } from './firebase';
 
 function App() {
   const [modalShow, setModalShow] = React.useState(false);
@@ -28,6 +29,7 @@ function App() {
         onSubmit={(values) => {
           console.log(values)
           setModalShow(true);
+          db.collection('orders').add(values);
         }}
       >
         {({
@@ -37,6 +39,7 @@ function App() {
           handleChange,
           handleBlur,
           handleSubmit,
+          handleReset,
           submitForm,
           isSubmitting
         }) => (
