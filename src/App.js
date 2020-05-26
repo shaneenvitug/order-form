@@ -3,7 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
+import Image from 'react-bootstrap/Image';
 import { Formik } from 'formik';
 import { db } from './firebase';
 
@@ -12,11 +13,11 @@ function App() {
   const [numOfProducts, setNumOfProducts] = React.useState(['']);
 
   return (
-    <div>
+    <div className="container">
       <header>
-        <h2>F</h2>
+        <Image className="logo" src="logo.png" rounded />
         <h1>Order Form</h1>
-        <p>Hi there! Kindly fill out all the fields below then click submit.</p>
+        <p>Hi there! Kindly fill out all the fields below.</p>
         <small className="text-muted">Disclaimer: Once the form is submitted, the order is final.</small>
       </header>
       <Formik
@@ -44,7 +45,7 @@ function App() {
           submitForm,
           isSubmitting
         }) => (
-            <Form onSubmit={handleSubmit}>
+            <Form id="form" onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
@@ -80,25 +81,9 @@ function App() {
                   placeholder="e.g 123 Main Street, Angeles City"
                   onChange={handleChange}
                   value={values.address}
+                  required
                 />
               </Form.Group>
-
-              <Form.Group controlId="formBasicAddress">
-                <Form.Label>Products</Form.Label>
-                {numOfProducts.map((product, index) => <Form.Control
-                  name={`products-${index}`}
-                  type="text"
-                  placeholder={`Your product ${index}`}
-                  onChange={(value) => { handleChange(value) }}
-                  value={values.products}
-                  style={{ marginBottom: ".5rem" }}
-                />)}
-              </Form.Group>
-
-              <Button variant="info" type="button" style={{ marginBottom: ".5rem" }}
-                onClick={() => {
-                  setNumOfProducts(prevState => [...prevState, ''])
-                }}>Add row</Button>
 
               <Form.Group controlId="formBasicMobile">
                 <Form.Label>Mobile Number</Form.Label>
@@ -108,20 +93,58 @@ function App() {
                   placeholder="e.g 0906 234 7856"
                   onChange={handleChange}
                   value={values.mobile}
+                  required
                 />
               </Form.Group>
+
+              <Form.Group controlId="formBasicProduct">
+                <Form.Label>Products</Form.Label>
+                {numOfProducts.map((product, index) => <Form.Control
+                  name={`products-${index}`}
+                  type="text"
+                  placeholder="e.g Sheer Puffed Sleeve Top White x1"
+                  onChange={(value) => { handleChange(value) }}
+                  value={values.products}
+                  style={{ marginBottom: ".5rem" }}
+                  required
+                />)}
+              </Form.Group>
+
+              <Button className="button" variant="outline-danger" type="button" style={{ marginBottom: ".5rem" }}
+                onClick={() => {
+                  setNumOfProducts(prevState => [...prevState, ''])
+                }}>ADD MORE PRODUCTS</Button>
 
               <Form.Group controlId="formBasicPayment">
                 <Form.Label>Pay By</Form.Label>
                 <br />
                 <ToggleButtonGroup name="paymentMethod" type="radio" value={values.paymentMethod}>
-                  <ToggleButton name="paymentMethod" value="cash" onChange={handleChange}>Cash</ToggleButton>
-                  <ToggleButton name="paymentMethod" value="bpi" onChange={handleChange}>BPI deposit</ToggleButton>
-                  <ToggleButton name="paymentMethod" value="psbank" onChange={handleChange}>PS Bank deposit</ToggleButton>
+                  <ToggleButton className="toggleButton" name="paymentMethod" value="cash" onChange={handleChange}>
+                    <div className="img-container margin-top">
+                      <img id="cash" src="peso.png" alt="cash logo" />
+                      <p>&nbsp;Cash</p>
+                    </div>
+                  </ToggleButton>
+                  <ToggleButton className="toggleButton" name="paymentMethod" value="bpi" onChange={handleChange}>
+                    <div className="img-container margin-top">
+                      <img id="bpi" src="bpi.jpg" alt="bpi logo" />
+                      <p>&nbsp;deposit</p>
+                    </div>
+                  </ToggleButton>
+                  <ToggleButton className="toggleButton" name="paymentMethod" value="psbank" onChange={handleChange}>
+                    <div className="img-container">
+                      <img id="psbank" src="psbank.png" alt="ps bank logo" /> 
+                      <p>&nbsp;deposit</p>
+                    </div>
+                  </ToggleButton>
                 </ToggleButtonGroup>
               </Form.Group>
 
-              <Button variant="info" type="submit">Submit</Button>
+              <Button className="button" variant="outline-danger" type="submit" block>PLACE YOUR ORDER</Button>
+              <br />
+              <small className="text-muted">
+                By clicking place order, you agree with <strong>proceeding with the payment method within the next hour</strong> (except for Cash).
+              </small>
             </Form>
           )}
       </Formik>
@@ -136,10 +159,11 @@ function App() {
         onHide={() => setModalShow(false)}
       >
         <Modal.Body>
-          <h4>F</h4>
+          <Image className="logo" src="logo.png" rounded />
+          <p id="thanks">Thank you for your order! <span>&#128151;</span></p>
           <p>
-            Thank you for your order.
-        </p>
+            You will receive a confirmation message showing the <strong>total cost of your order and number of items</strong>. Instructions for the payment method will be sent as well.
+          </p>
         </Modal.Body>
       </Modal>
     </div>

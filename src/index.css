@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 60%;
+  max-width: 55%;
   margin: 0 auto;
   margin-top: 2rem;
 }
@@ -21,5 +21,130 @@ h2 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+
+.logo {
+  width: 3rem;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+header {
+  font-family: 'Roboto', sans-serif;
+}
+
+header p {
+  font-size: small;
+  margin-bottom: 0;
+}
+
+#form {
+  margin-top: 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.toggleButton {
+  color: black;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  padding: 0 1rem;
+}
+
+.toggleButton:hover {
+  cursor: pointer;
+  color: black;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #d32b2a;
+}
+
+#cash {
+  width: 1.4rem;
+  height: auto;
+}
+
+#bpi {
+  width: 2.4rem;
+  height: auto;
+}
+
+#psbank {
+  width: 4.6rem;
+  height: auto;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container p {
+  margin-bottom: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+  color: black;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-bottom: 3px solid #d32b2a;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.modal-body p#thanks {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 575.98px) {
+  body {
+    max-width: 80%;
+  }
+
+  .container {
+    max-width: 20rem;
+    padding: 0;
+  }
+
+  .btn-group,
+  .btn-group-vertical {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .margin-top {
+    margin-bottom: 0.5rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .toggleButton {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
 }
