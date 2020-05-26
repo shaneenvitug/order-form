@@ -75,7 +75,7 @@ function App() {
 
               <Form.Group controlId="formBasicAddress">
                 <Form.Label>Delivery Address</Form.Label>
-                <Form.Control
+                <Form.Control as="textarea" rows="2"
                   name="address"
                   type="text"
                   placeholder="e.g 123 Main Street, Angeles City"
