@@ -9,8 +9,11 @@ import { Formik } from 'formik';
 import { db } from './firebase';
 
 function App() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const product = urlParams.get('product');
+
   const [modalShow, setModalShow] = React.useState(false);
-  const [numOfProducts, setNumOfProducts] = React.useState(['']);
+  const [numOfProducts, setNumOfProducts] = React.useState([product]);
 
   return (
     <div className="container">
@@ -103,8 +106,13 @@ function App() {
                   name={`products-${index}`}
                   type="text"
                   placeholder="e.g Sheer Puffed Sleeve Top White x1"
-                  onChange={(value) => { handleChange(value) }}
-                  value={values.products}
+                  onChange={(event) => { 
+                    handleChange(event)
+                    const newProducts = [...numOfProducts];
+                    newProducts[index] = event.target.value;
+                    setNumOfProducts(newProducts);
+                  }}
+                  value={numOfProducts[index]}
                   style={{ marginBottom: ".5rem" }}
                   required
                 />)}
