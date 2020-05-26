@@ -110,10 +110,17 @@ function App() {
                 />)}
               </Form.Group>
 
-              <Button className="button" variant="outline-danger" type="button" style={{ marginBottom: ".5rem" }}
+              <Button className="button" variant="outline-danger" type="button"  
+                style={{ marginBottom: ".5rem" }}
                 onClick={() => {
-                  setNumOfProducts(prevState => [...prevState, ''])
-                }}>ADD MORE PRODUCTS</Button>
+                setNumOfProducts(prevState => [...prevState, ''])
+                }}>ADD MORE</Button>
+
+              <Button className="button" variant="outline-warning" type="button"
+                style={{ marginBottom: ".5rem" }}
+                onClick={() => {
+                numOfProducts.length > 1 && setNumOfProducts(prevState => [...prevState.slice(0, -1)])
+                }}>REMOVE</Button>
 
               <Form.Group controlId="formBasicPayment">
                 <Form.Label>Pay By</Form.Label>
