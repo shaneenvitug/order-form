@@ -166,4 +166,16 @@ header p {
   .btn-outline-warning {
     margin: 0;
   }
+
+  .productName {
+    margin-bottom: 0;
+  }
+
+  .productColor {
+    width: 50%;
+  }
+
+  .productSize {
+    width: 50%;
+  }
 }

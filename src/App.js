@@ -7,13 +7,16 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import { Formik } from 'formik';
 import { db } from './firebase';
+import Products from './Products';
 
 function App() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const product = urlParams.get('product');
 
   const [modalShow, setModalShow] = React.useState(false);
-  const [numOfProducts, setNumOfProducts] = React.useState([product]);
+  const [products, setProducts] = React.useState([{
+    name: '',
+    color: '',
+    size: ''
+  }]);
 
   return (
     <div className="container">
@@ -100,44 +103,30 @@ function App() {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formBasicProduct">
-                <Form.Label>Products</Form.Label>
-                {numOfProducts.map((product, index) => <Form.Control
-                  name={`products-${index}`}
-                  type="text"
-                  placeholder="e.g Sheer Puffed Sleeve Top White x1"
-                  onChange={(event) => { 
-                    handleChange(event)
-                    const newProducts = [...numOfProducts];
-                    newProducts[index] = event.target.value;
-                    setNumOfProducts(newProducts);
-                  }}
-                  value={numOfProducts[index]}
-                  style={{ marginBottom: ".5rem" }}
-                  required
-                />)}
-              </Form.Group>
+              <Form.Label>Products</Form.Label>
+              <Form.Row>
+                {products.map((product, index) => <Products index={index} handleChange={handleChange}/>)}
+              </Form.Row>
 
               <Button className="button" variant="outline-danger" type="button"  
-                style={{ marginBottom: ".5rem" }}
-                onClick={() => {
-                setNumOfProducts(prevState => [...prevState, ''])
-                }}>ADD MORE</Button>
-
+                style={{ marginBottom: ".5rem" }} 
+                onClick={() => {setProducts([...products, {name: '', color: '', size: ''}]) }}
+                >ADD MORE</Button>
+  
               <Button className="button" variant="outline-warning" type="button"
-                style={{ marginBottom: ".5rem" }}
+                style={{ marginBottom: ".5rem" }} 
                 onClick={() => {
-                numOfProducts.length > 1 && setNumOfProducts(prevState => [...prevState.slice(0, -1)])
-                }}>REMOVE</Button>
+                  products.length > 1 && setProducts(prevState => [...prevState.slice(0, -1)]) }}
+                >REMOVE</Button>
 
               <Form.Group controlId="formBasicPayment">
                 <Form.Label>Pay By</Form.Label>
                 <br />
                 <ToggleButtonGroup name="paymentMethod" type="radio" value={values.paymentMethod}>
-                  <ToggleButton className="toggleButton" name="paymentMethod" value="cash" onChange={handleChange}>
+                  <ToggleButton className="toggleButton" name="paymentMethod" value="cashondelivery" onChange={handleChange}>
                     <div className="img-container margin-top">
                       <img id="cash" src="peso.png" alt="cash logo" />
-                      <p>&nbsp;Cash</p>
+                      <p>&nbsp;Cash On Delivery</p>
                     </div>
                   </ToggleButton>
                   <ToggleButton className="toggleButton" name="paymentMethod" value="bpi" onChange={handleChange}>
