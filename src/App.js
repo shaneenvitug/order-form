@@ -39,6 +39,7 @@ function App() {
         }}
         onSubmit={(values) => {
           console.log(values)
+          if (!values.paymentMethod) return;
           setModalShow(true);
           db.collection('orders').add(values);
         }}
@@ -152,6 +153,7 @@ function App() {
                   </ToggleButton>
                 </ToggleButtonGroup>
               </Form.Group>
+              {!values.paymentMethod && isSubmitting && <div id="error" className="text-muted">Please choose a payment method.</div>}
 
               <Button className="button" variant="outline-danger" type="submit" block>PLACE YOUR ORDER</Button>
               <br />

@@ -150,6 +150,11 @@ header p {
   height: 1.3rem;
 }
 
+#error {
+  color: #DC3545 !important;
+  font-size: 0.8rem;
+}
+
 @media (max-width: 575.98px) {
 
   .container {
