@@ -23,7 +23,9 @@ function App() {
     <div className="container">
       <header>
         <Image className="logo" src="logo.png" rounded />
-        <h1>Order Form</h1>
+        <div id="h1-container">
+          <h1>Order Form</h1>
+        </div>
         <p>Hi there! Kindly fill out all the fields below.</p>
         <small className="text-muted">Disclaimer: Once the form is submitted, the order is final.</small>
       </header>
