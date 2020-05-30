@@ -5,6 +5,7 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
+import InputGroup from 'react-bootstrap/InputGroup'
 import { Formik } from 'formik';
 import { db } from './firebase';
 import Products from './Products';
@@ -29,7 +30,7 @@ function App() {
       <Formik
         initialValues={{
           name: '',
-          email: '',
+          username: '',
           address: '',
           mobile: '',
           paymentMethod: ''
@@ -64,19 +65,22 @@ function App() {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  name="email"
-                  type="email"
-                  placeholder="email@johndoe.com"
-                  onChange={handleChange}
-                  value={values.email}
-                  required
-                />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
+              <Form.Group controlId="formBasicUsername">
+                <Form.Label>Instagram Username</Form.Label>
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    type="text"
+                    placeholder="formulafashionclothing"
+                    aria-describedby="inputGroupPrepend"
+                    name="username"
+                    value={values.username}
+                    onChange={handleChange}
+                    required
+                  />
+                </InputGroup>
               </Form.Group>
 
               <Form.Group controlId="formBasicAddress">
@@ -89,6 +93,9 @@ function App() {
                   value={values.address}
                   required
                 />
+                <Form.Text className="text-muted">
+                    We'll never share your details with anyone else.
+                </Form.Text>
               </Form.Group>
 
               <Form.Group controlId="formBasicMobile">
