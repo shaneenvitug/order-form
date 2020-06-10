@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { datadogRum } from '@datadog/browser-rum';
+import { datadogLogs } from '@datadog/browser-logs';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { datadogRum } from '@datadog/browser-rum';
 
 datadogRum.init({
-    applicationId: '<DATADOG_APPLICATION_ID>',
-    clientToken: '<DATADOG_CLIENT_TOKEN>',
+    applicationId: '2848a661-a050-4cb6-8a1d-60d31e5c306a',
+    clientToken: 'pub8df0623c1f91c50c62c214b15ee95090',
     datacenter: 'us',
     sampleRate: 100,
+});
+
+
+datadogLogs.init({
+    clientToken: 'pube3d6d0e37df5d1cb5d73de6cf8e60ab5',
+    datacenter: 'us',
+    forwardErrorsToLogs: true,
+    sampleRate: 100
 });
 
 ReactDOM.render(
