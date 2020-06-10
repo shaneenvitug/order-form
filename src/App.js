@@ -44,7 +44,7 @@ function App() {
           if (!values.paymentMethod) return;
           setModalShow(true);
           db.collection('orders').add(values);
-          datadogLogs.logger.info('Form submitted', {name: values.name, username: values.username, address: values.address, mobile: values.mobile, paymentMethod: values.paymentMethod });
+          datadogLogs.logger.info('Form submitted', {name: 'submitButton', id: 1});
         }}
       >
         {({
