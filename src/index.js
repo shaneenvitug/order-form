@@ -5,6 +5,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { datadogRum } from '@datadog/browser-rum';
+
+datadogRum.init({
+    applicationId: '<DATADOG_APPLICATION_ID>',
+    clientToken: '<DATADOG_CLIENT_TOKEN>',
+    datacenter: 'us',
+    sampleRate: 100,
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
