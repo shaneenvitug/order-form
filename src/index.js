@@ -16,7 +16,6 @@ datadogRum.init({
     sampleRate: 100,
 });
 
-
 datadogLogs.init({
     clientToken: 'pube3d6d0e37df5d1cb5d73de6cf8e60ab5',
     datacenter: 'us',

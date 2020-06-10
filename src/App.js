@@ -7,6 +7,8 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup'
 import { Formik } from 'formik';
+import { datadogLogs } from '@datadog/browser-logs';
+
 import { db } from './firebase';
 import Products from './Products';
 
@@ -42,6 +44,7 @@ function App() {
           if (!values.paymentMethod) return;
           setModalShow(true);
           db.collection('orders').add(values);
+          datadogLogs.logger.info('Form submitted', {name: values.name, username: values.username, address: values.address, mobile: values.mobile, paymentMethod: values.paymentMethod });
         }}
       >
         {({
