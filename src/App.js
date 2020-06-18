@@ -142,6 +142,11 @@ function App() {
                       <p>&nbsp;Cash On Delivery</p>
                     </div>
                   </ToggleButton>
+                  <ToggleButton className="toggleButton" name="paymentMethod" value="gcash" onChange={handleChange}>
+                    <div className="img-container margin-top1">
+                      <img id="gcash" src="gcash.png" alt="gcash logo" />
+                    </div>
+                  </ToggleButton>
                   <ToggleButton className="toggleButton" name="paymentMethod" value="bpi" onChange={handleChange}>
                     <div className="img-container margin-top">
                       <img id="bpi" src="bpi.jpg" alt="bpi logo" />

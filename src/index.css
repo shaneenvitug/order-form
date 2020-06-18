@@ -88,6 +88,11 @@ header p {
   height: auto;
 }
 
+#gcash {
+  width: 5.6rem;
+  height: auto;
+}
+
 #bpi {
   width: 2.4rem;
   height: auto;
@@ -111,6 +116,10 @@ header p {
 
 .margin-top {
   margin-top: 1rem;
+}
+
+.margin-top1 {
+  margin-top: 0.8rem;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
@@ -170,6 +179,10 @@ header p {
   }
 
   .margin-top {
+    margin-bottom: 0.5rem;
+  }
+
+  .margin-top1 {
     margin-bottom: 0.5rem;
   }
 
