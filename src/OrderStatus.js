@@ -54,6 +54,7 @@ function OrderStatus() {
                   <Form.Control
                     as="select"
                     id="inlineFormCustomSelectPref"
+                    value={order.orderStatus}
                     custom
                     onChange={(event) => handleChange(event, order.id)}
                   >

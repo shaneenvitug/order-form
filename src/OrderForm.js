@@ -37,7 +37,8 @@ return (
           username: '',
           address: '',
           mobile: '',
-          paymentMethod: ''
+          paymentMethod: '',
+          orderStatus: 'pending'
         }}
         onSubmit={(values) => {
           console.log(values)
