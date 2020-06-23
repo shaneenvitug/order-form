@@ -33,6 +33,10 @@ code {
   margin: 0 auto;
 }
 
+#complete {
+  background-color: #82ba4a !important;
+}
+
 th {
   text-align: center;
 }
@@ -204,6 +208,10 @@ header p {
   .table td,
   .table th {
     padding: 0.25rem;
+  }
+
+  #inlineFormCustomSelectPref {
+    font-size: xx-small;
   }
 
   .btn-group,
