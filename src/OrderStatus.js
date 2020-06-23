@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import Table from 'react-bootstrap/Table'
 
@@ -30,11 +31,10 @@ function OrderStatus() {
         <thead>
           <tr>
             <th>#</th>
-            <th>CUSTOMER</th>
-            <th>INSTAGRAM</th>
-            <th>ADDRESS</th>
-            <th>MOBILE</th>
-            <th>PAYMENT METHOD</th>
+            <th><span>&#128129;</span></th>
+            <th><span>&#127968;</span></th>
+            <th><span>&#128241;</span></th>
+            <th><span>&#128176;</span></th>
           </tr>
         </thead>
         {orders && orders.map((order, index) => {
@@ -42,8 +42,7 @@ function OrderStatus() {
             <tbody>
               <tr>
                 <td>{index}</td>
-                <td>{order.name}</td>
-                <td>{order.username}</td>
+                <td>{order.name} <br/><strong>@{order.username}</strong></td>
                 <td>{order.address}</td>
                 <td>0{order.mobile}</td>
                 <td>{order.paymentMethod}</td>
