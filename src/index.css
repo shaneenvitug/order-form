@@ -19,7 +19,8 @@ code {
 }
 
 .container,
-#orderStatus {
+#orderStatus,
+#password {
   background-color: white;
   padding: 1.5rem;
   border-radius: 2%;
@@ -31,6 +32,12 @@ code {
 #orderStatus {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+#password {
+  max-width: 350px;
+  margin: 0 auto;
+  margin-top: 20rem;
 }
 
 #complete {
@@ -182,7 +189,8 @@ header p {
 @media (max-width: 575.98px) {
 
   .container,
-  #orderStatus {
+  #orderStatus,
+  #password {
     width: 90%;
     padding: 1.5rem;
     border-radius: 0.5rem;
@@ -198,6 +206,10 @@ header p {
 
   #orderStatus a {
     font-size: small;
+  }
+
+  #password {
+    margin-top: 15rem;
   }
 
   td,
