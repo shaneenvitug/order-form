@@ -7,7 +7,6 @@ import store from 'store';
 function Login(props) {
   const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState(false);
-  const [show, setShow] = React.useState(true)
 
   const handleChange = (event) => {
     setPassword(event.target.value)
@@ -26,7 +25,7 @@ function Login(props) {
 
   return(
     <Form id="password" onSubmit={onSubmit}>
-      {error && <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+      {error && <Alert variant="danger" onClose={() => setError(false)} dismissible>
         <Alert.Heading>WRONG PASSWORD! NOOB</Alert.Heading>
         <p>
           This is top secret. If you are not Bianx, again, KEEP OUT! If you are Bianx, hi :) Just ask ate for the password LOL 

@@ -2,10 +2,14 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import store from 'store';
+import { Redirect } from 'react-router-dom';
+import isLoggedIn from './helpers/is_logged_in';
 
 import { db } from './firebase';
 
-function OrderStatus() {
+function OrderStatus(props) {
   const [orders, setOrders] = React.useState([]);
 
   React.useEffect(() => {
@@ -29,10 +33,21 @@ function OrderStatus() {
     ordersRef.update({orderStatus: event.target.value})
   }
 
+  const handleLogout = history => () => {
+    store.remove('loggedIn');
+    props.history.push('/login');
+  }
+
+  if (!isLoggedIn()) {
+    return <Redirect to='/login' />;
+  }
+
   return (
     <div id="orderStatus">
       <h1>Total # of Orders: {orders.length}</h1><br/>
       <a href="https://console.firebase.google.com/u/1/project/order-form-6a274/database/firestore/data~2Forders~2F2rdd0c4Eip8rLFjRfue5">firebase</a>
+      <br />
+      <Button variant="info" onClick={handleLogout()}>Logout</Button>
       <Table responsive>
         <thead>
           <tr>
