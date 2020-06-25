@@ -47,7 +47,7 @@ function OrderStatus(props) {
       <h1>Total # of Orders: {orders.length}</h1><br/>
       <a href="https://console.firebase.google.com/u/1/project/order-form-6a274/database/firestore/data~2Forders~2F2rdd0c4Eip8rLFjRfue5">firebase</a>
       <br />
-      <Button variant="info" onClick={handleLogout()}>Logout</Button>
+      <Button variant="info" id="logout" onClick={handleLogout()}>Logout</Button>
       <Table responsive>
         <thead>
           <tr>

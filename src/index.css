@@ -37,11 +37,16 @@ code {
 #password {
   max-width: 350px;
   margin: 0 auto;
-  margin-top: 20rem;
+  margin-top: 15rem;
 }
 
 #complete {
   background-color: #82ba4a !important;
+}
+
+#logout {
+  font-size: x-small;
+  margin-bottom: 0.5rem;
 }
 
 th {
